@@ -1,0 +1,43 @@
+Objective
+=========
+The purpose of these readme and scripts are to ease the steps to create a docker image for tensorflow with GPU support.  These scripts let users and other team members to start development without each of them going through the hassles of python and tensorflow setup. (IT IS A PAIN!!)
+
+User Quickstart
+===============
+1. ./tf_dir/scripts/create_container
+2. docker ps  (to see the new containe name)
+3. docker attach new_container_name
+
+Admin Quickstart
+================
+Create New Docker image:
+1. docker run -d --gpus all -it tensorflow/tensorflow:latest-gpu bash
+2. docker ps  (to see the new containe name)
+3. docker attach new_container_name
+	# setup/install docker image e.g......
+	apt install vim
+	modify /etc/pam.d/su to trust wheel group
+	adduser docker
+	addgroup wheel
+	vi /etc/group to add docker to wheel group
+	apt install python3-pip
+	python3 -m pip install -U pip
+	python -m pip install -U pip
+	pip install tensorflow
+	export PATH=$PATH:/home/docker/.local/bin
+	test docker with check_version and nvidia-smi
+4. Save image: ./tf_dir/script/commit_image DOCKER_CONTAINER_NAME
+5. New docker image ready for users
+
+Example Commands
+================
+$ docker run -d --user $(id -u):$(id -g) --gpus all -v "$(pwd)"/tf_dir:/home/docker/devel -it tensorflow/tensorflow:latest-gpu bash
+$ docker rename container_name new_name
+$ docker exec -u root -t -i heisenberg /bin/bash
+$ docker ps
+$ docker image list
+$ docker rm container_name
+$ docker commit container_name tensorflow/tensorflow:latest-gpu-custom
+
+Detech container:
+CTRL+P followed by CTRL+Q.

@@ -1,0 +1,14 @@
+#!/bin/bash
+
+CONTAINER_NAME=$1
+IMAGE_NAME=tensorflow/tensorflow:latest-gpu-custom
+
+if [ -z "$1" ]
+  then
+    echo "Syntax:"
+    echo $0 "DOCKER_CONTAINER_NAME"
+    echo "Use docker ps -a to list container names"
+    exit 0
+fi
+
+docker commit $CONTAINER_NAME $IMAGE_NAME
