@@ -2,6 +2,12 @@ Objective
 =========
 The purpose of these readme and scripts are to ease the steps to create a docker image for tensorflow with GPU support.  These scripts let users and other team members to start development without each of them going through the hassles of python and tensorflow setup. (IT IS A PAIN!!)
 
+Prerequisites
+=============
+1. Install docker for tensorflow following this link: https://www.tensorflow.org/install/docker
+2. Install Tensorflow Object Detection API https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/installation.md
+(It would be great to add the Tensorflow Object Detection API to the docker, but then this repo may not get the most update version of API.  Maybe I can freeze a version here and let other people to upgrade the API when needed)
+
 User Quickstart
 ===============
 1. ./tf_dir/scripts/create_container
@@ -25,6 +31,8 @@ Create New Docker image:
 	python -m pip install -U pip
 	pip install tensorflow
 	export PATH=$PATH:/home/docker/.local/bin
+    apt install python-opencv
+    pip3 install opencv-python
 	test docker with check_version and nvidia-smi
 4. Save image: ./tf_dir/script/commit_image DOCKER_CONTAINER_NAME
 5. New docker image ready for users
@@ -41,3 +49,10 @@ $ docker commit container_name tensorflow/tensorflow:latest-gpu-custom
 
 Detech container:
 CTRL+P followed by CTRL+Q.
+
+To-do
+=====
+1. Add examples to do tensorflow inference
+2. Add examples to do tensorflow training
+
+
