@@ -1,6 +1,6 @@
 #!/bin/bash
 
-IMAGE_NAME=tensorflow/tensorflow:latest-gpu-custom
+IMAGE_NAME=tensorflow/tensorflow:latest-gpu
 USERNAME=docker
 
 docker run -d --user $(id -u):$(id -g) --gpus all -v "$(pwd)"/tf_dir:/home/$USERNAME/devel -w /home/$USERNAME -it $IMAGE_NAME bash
