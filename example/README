@@ -1,0 +1,8 @@
+README
+======
+
+This example serves as a very basic application to quick test the Tensorflow Object API setup.  If everything is done correctly, run the below command will detect objects in a given picture.
+
+1. save a interesting picture as image name test_orig.jpg
+2. $ python3 detect_single_image.py
+3. view resulting pic test_result.jpg with bounding boxes of detected objects

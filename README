@@ -14,18 +14,20 @@ Create New Docker image:
 1. docker run -d --gpus all -it tensorflow/tensorflow:latest-gpu bash
 2. docker ps  (to see the new containe name)
 3. docker attach new_container_name
-	# setup/install docker image e.g......
-	apt install vim
-	modify /etc/pam.d/su to trust wheel group
-	adduser docker
-	addgroup wheel
-	vi /etc/group to add docker to wheel group
-	apt install python3-pip
-	python3 -m pip install -U pip
-	python -m pip install -U pip
-	pip install tensorflow
-	export PATH=$PATH:/home/docker/.local/bin
-	test docker with check_version and nvidia-smi
+    # setup/install docker image e.g......
+    apt install vim git
+    modify /etc/pam.d/su to trust wheel group
+    adduser docker
+    addgroup wheel
+    vi /etc/group to add docker to wheel group
+    python3 -m pip install -U pip
+    python -m pip install -U pip
+    apt install python3-pip
+    python3 -m pip install opencv-python
+    pip install tensorflow
+    export PATH=$PATH:/home/docker/.local/bin
+    test docker with check_version and nvidia-smi
+    install Tensorflow Object Detection API
 4. Save image: ./tf_dir/script/commit_image DOCKER_CONTAINER_NAME
 5. New docker image ready for users
 
